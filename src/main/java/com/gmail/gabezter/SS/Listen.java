@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.entity.AnimalTamer;
 import org.bukkit.entity.Entity;
@@ -34,141 +35,76 @@ public class Listen implements Listener {
 			Random chance = new Random();
 			Player player = e.getPlayer();
 			int a = chance.nextInt(100) + 1;
+			Block eBlock = e.getBlock();
+			World eWorld = eBlock.getWorld();
+			Location eLoc = eBlock.getLocation();
 
 			if (a <= 10) {
 				player.sendMessage(ChatColor.RED + Integer.toString(a));
 				e.setCancelled(true);
 				e.getBlock().setType(Material.AIR);
-				e.getBlock().getWorld()
-						.dropItemNaturally(e.getBlock().getLocation(), iss.bp);
-				e.getBlock().getWorld()
-						.dropItemNaturally(e.getBlock().getLocation(), iss.app);
-				e.getBlock().getWorld()
-						.dropItemNaturally(e.getBlock().getLocation(), iss.gap);
+				eWorld.dropItemNaturally(eLoc, iss.bp);
+				eWorld.dropItemNaturally(eLoc, iss.app);
+				eWorld.dropItemNaturally(eLoc, iss.gap);
 			}
 			if (a <= 20 && a > 10) {
+
 				player.sendMessage(ChatColor.BLUE + Integer.toString(a));
 				e.setCancelled(true);
 				e.getBlock().setType(Material.AIR);
-				e.getBlock()
-						.getWorld()
-						.dropItemNaturally(e.getBlock().getLocation(),
-								iss.PleatherH);
-				e.getBlock()
-						.getWorld()
-						.dropItemNaturally(e.getBlock().getLocation(),
-								iss.PleatherC);
-				e.getBlock()
-						.getWorld()
-						.dropItemNaturally(e.getBlock().getLocation(),
-								iss.PleatherL);
-				e.getBlock()
-						.getWorld()
-						.dropItemNaturally(e.getBlock().getLocation(),
-								iss.PleatherB);
+				eWorld.dropItemNaturally(eLoc, iss.PleatherH);
+				eWorld.dropItemNaturally(eLoc, iss.PleatherC);
+				eWorld.dropItemNaturally(eLoc, iss.PleatherL);
+				eWorld.dropItemNaturally(eLoc, iss.PleatherB);
 			}
 			if (a <= 30 && a > 20) {
 				player.sendMessage(ChatColor.GREEN + Integer.toString(a));
 				e.setCancelled(true);
 				e.getBlock().setType(Material.AIR);
-				e.getBlock()
-						.getWorld()
-						.dropItemNaturally(e.getBlock().getLocation(),
-								iss.PgoldH);
-				e.getBlock()
-						.getWorld()
-						.dropItemNaturally(e.getBlock().getLocation(),
-								iss.PgoldC);
-				e.getBlock()
-						.getWorld()
-						.dropItemNaturally(e.getBlock().getLocation(),
-								iss.PgoldL);
-				e.getBlock()
-						.getWorld()
-						.dropItemNaturally(e.getBlock().getLocation(),
-								iss.PgoldB);
+				eWorld.dropItemNaturally(eLoc, iss.PgoldH);
+				eWorld.dropItemNaturally(eLoc, iss.PgoldC);
+				eWorld.dropItemNaturally(eLoc, iss.PgoldL);
+				eWorld.dropItemNaturally(eLoc, iss.PgoldB);
 			}
 			if (a <= 40 && a > 30) {
 				player.sendMessage(ChatColor.YELLOW + Integer.toString(a));
 				e.setCancelled(true);
 				e.getBlock().setType(Material.AIR);
-				e.getBlock()
-						.getWorld()
-						.dropItemNaturally(e.getBlock().getLocation(),
-								iss.PironH);
-				e.getBlock()
-						.getWorld()
-						.dropItemNaturally(e.getBlock().getLocation(),
-								iss.PironC);
-				e.getBlock()
-						.getWorld()
-						.dropItemNaturally(e.getBlock().getLocation(),
-								iss.PironL);
-				e.getBlock()
-						.getWorld()
-						.dropItemNaturally(e.getBlock().getLocation(),
-								iss.PironB);
-				e.getBlock()
-						.getWorld()
-						.spawnEntity(e.getBlock().getLocation(),
-								EntityType.OCELOT)
-						.setCustomName(
-								ChatColor.WHITE + player.getName().toString()
-										+ "'s Cat");
+				eWorld.dropItemNaturally(eLoc, iss.PironH);
+				eWorld.dropItemNaturally(eLoc, iss.PironC);
+				eWorld.dropItemNaturally(eLoc, iss.PironL);
+				eWorld.dropItemNaturally(eLoc, iss.PironB);
+				eWorld.spawnEntity(eLoc, EntityType.OCELOT).setCustomName(ChatColor.WHITE + player.getName().toString() + "'s Cat");
 			}
 			if (a <= 50 && a > 40) {
 				player.sendMessage(ChatColor.MAGIC + Integer.toString(a));
 				e.setCancelled(true);
 				e.getBlock().setType(Material.AIR);
-				e.getBlock()
-						.getWorld()
-						.dropItemNaturally(e.getBlock().getLocation(),
-								iss.PdiamondH);
-				e.getBlock()
-						.getWorld()
-						.dropItemNaturally(e.getBlock().getLocation(),
-								iss.PdiamondC);
-				e.getBlock()
-						.getWorld()
-						.dropItemNaturally(e.getBlock().getLocation(),
-								iss.PdiamondL);
-				e.getBlock()
-						.getWorld()
-						.dropItemNaturally(e.getBlock().getLocation(),
-								iss.PdiamondB);
-				e.getBlock()
-						.getWorld()
-						.spawnEntity(e.getBlock().getLocation(),
-								EntityType.HORSE)
-						.setCustomName(
-								ChatColor.WHITE + player.getName().toString()
-										+ "'s Horse");
+				eWorld.dropItemNaturally(eLoc, iss.PdiamondH);
+				eWorld.dropItemNaturally(eLoc, iss.PdiamondC);
+				eWorld.dropItemNaturally(eLoc, iss.PdiamondL);
+				eWorld.dropItemNaturally(eLoc, iss.PdiamondB);
+				eWorld.spawnEntity(eLoc, EntityType.HORSE).setCustomName(ChatColor.WHITE + player.getName().toString() + "'s Horse");
 			}
 
-			if (a > 50 && a<60) {
+			if (a > 50 && a < 60) {
 				player.sendMessage(ChatColor.RED + Integer.toString(a));
 				e.setCancelled(true);
 				e.getBlock().setType(Material.AIR);
-				e.getBlock()
-						.getWorld()
-						.spawnEntity(e.getBlock().getLocation(),
-								EntityType.WOLF)
-						.setCustomName(
-								ChatColor.WHITE + player.getName().toString()
-										+ "'s Dog");
+				eWorld.spawnEntity(eLoc, EntityType.WOLF).setCustomName(ChatColor.WHITE + player.getName().toString() + "'s Dog");
 
 			}
-			if(a>59){
+			if (a > 59) {
 				player.sendMessage(ChatColor.RED + Integer.toString(a));
 				e.setCancelled(true);
 				e.getBlock().setType(Material.TRAPPED_CHEST);
-				int c = e.getBlock().getLocation().getBlockY();
-				player.sendMessage(ChatColor.WHITE +Integer.toString(c));
-				Location loc = new Location(e.getBlock().getLocation().getWorld(), e.getBlock().getLocation().getX(), e.getBlock().getLocation().getY()-1, e.getBlock().getLocation().getZ());
+				int c = eLoc.getBlockY();
+				player.sendMessage(ChatColor.WHITE + Integer.toString(c));
+				Location loc = new Location(eLoc.getWorld(), eLoc.getX(), eLoc.getY() - 1, eLoc.getZ());
 				Block cs = loc.getBlock();
 				player.sendMessage(Integer.toString(cs.getLocation().getBlockY()));
 				cs.setType(Material.TNT);
-				
+
 			}
 
 		}
@@ -181,12 +117,9 @@ public class Listen implements Listener {
 				final String owner = p.getName().toString();
 				Bukkit.getScheduler().runTaskLater(plugin, new Runnable() {
 					public void run() {
-						if (e.getEntity().getCustomName()
-								.equals(ChatColor.WHITE + owner + "'s Dog")) {
-							Bukkit.getServer().broadcastMessage(
-									e.getEntity().getCustomName());
-							AnimalTamer at = Bukkit.getServer()
-									.getPlayer(owner);
+						if (e.getEntity().getCustomName().equals(ChatColor.WHITE + owner + "'s Dog")) {
+							Bukkit.getServer().broadcastMessage(e.getEntity().getCustomName());
+							AnimalTamer at = Bukkit.getServer().getPlayer(owner);
 							Entity et = e.getEntity();
 							Wolf wolf = (Wolf) et;
 							wolf.setTamed(true);
@@ -197,17 +130,15 @@ public class Listen implements Listener {
 				}, 1L);
 			}
 		}
+
 		if (e.getEntity() instanceof Ocelot) {
 			for (final Player p : Bukkit.getOnlinePlayers()) {
 				final String owner = p.getName().toString();
 				Bukkit.getScheduler().runTaskLater(plugin, new Runnable() {
 					public void run() {
-						if (e.getEntity().getCustomName()
-								.equals(ChatColor.WHITE + owner + "'s Cat")) {
-							Bukkit.getServer().broadcastMessage(
-									e.getEntity().getCustomName());
-							AnimalTamer at = Bukkit.getServer()
-									.getPlayer(owner);
+						if (e.getEntity().getCustomName().equals(ChatColor.WHITE + owner + "'s Cat")) {
+							Bukkit.getServer().broadcastMessage(e.getEntity().getCustomName());
+							AnimalTamer at = Bukkit.getServer().getPlayer(owner);
 							Entity et = e.getEntity();
 							Ocelot wolf = (Ocelot) et;
 							wolf.setTamed(true);
@@ -215,16 +146,19 @@ public class Listen implements Listener {
 							wolf.setAdult();
 							Random i = new Random();
 							int ps = i.nextInt(4);
-							if(ps==0){
+							if (ps == 0) {
 								wolf.setCatType(Ocelot.Type.WILD_OCELOT);
-							}else
-							if(ps==1){
+							}
+							else
+							if (ps == 1) {
 								wolf.setCatType(Ocelot.Type.BLACK_CAT);
-							}else
-							if(ps==2){
+							}
+							else
+							if (ps == 2) {
 								wolf.setCatType(Ocelot.Type.RED_CAT);
-							}else
-							if(ps==3){
+							}
+							else
+							if (ps == 3) {
 								wolf.setCatType(Ocelot.Type.SIAMESE_CAT);
 							}
 						}
@@ -232,17 +166,15 @@ public class Listen implements Listener {
 				}, 1L);
 			}
 		}
+
 		if (e.getEntity() instanceof Horse) {
 			for (final Player p : Bukkit.getOnlinePlayers()) {
 				final String owner = p.getName().toString();
 				Bukkit.getScheduler().runTaskLater(plugin, new Runnable() {
 					public void run() {
-						if (e.getEntity().getCustomName()
-								.equals(ChatColor.WHITE + owner + "'s Horse")) {
-							Bukkit.getServer().broadcastMessage(
-									e.getEntity().getCustomName());
-							AnimalTamer at = Bukkit.getServer()
-									.getPlayer(owner);
+						if (e.getEntity().getCustomName().equals(ChatColor.WHITE + owner + "'s Horse")) {
+							Bukkit.getServer().broadcastMessage(e.getEntity().getCustomName());
+							AnimalTamer at = Bukkit.getServer().getPlayer(owner);
 							Entity et = e.getEntity();
 							Horse wolf = (Horse) et;
 							wolf.setTamed(true);
@@ -255,4 +187,5 @@ public class Listen implements Listener {
 		}
 
 	}
+
 }
