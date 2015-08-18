@@ -22,7 +22,7 @@ import org.bukkit.event.entity.CreatureSpawnEvent;
 
 public class Listen implements Listener {
 
-	Drops iss = new Drops();
+	Perks perks = new Perks();
 	Main plugin;
 
 	public Listen(Main plugin) {
@@ -43,55 +43,53 @@ public class Listen implements Listener {
 				player.sendMessage(ChatColor.RED + Integer.toString(a));
 				e.setCancelled(true);
 				e.getBlock().setType(Material.AIR);
-				eWorld.dropItemNaturally(eLoc, iss.bp);
-				eWorld.dropItemNaturally(eLoc, iss.app);
-				eWorld.dropItemNaturally(eLoc, iss.gap);
+				eWorld.dropItemNaturally(eLoc, perks.gap);
 			}
 			if (a <= 20 && a > 10) {
 
 				player.sendMessage(ChatColor.BLUE + Integer.toString(a));
 				e.setCancelled(true);
 				e.getBlock().setType(Material.AIR);
-				eWorld.dropItemNaturally(eLoc, iss.PleatherH);
-				eWorld.dropItemNaturally(eLoc, iss.PleatherC);
-				eWorld.dropItemNaturally(eLoc, iss.PleatherL);
-				eWorld.dropItemNaturally(eLoc, iss.PleatherB);
+				eWorld.dropItemNaturally(eLoc, perks.PleatherH);
+				eWorld.dropItemNaturally(eLoc, perks.PleatherC);
+				eWorld.dropItemNaturally(eLoc, perks.PleatherL);
+				eWorld.dropItemNaturally(eLoc, perks.PleatherB);
 			}
 			if (a <= 30 && a > 20) {
 				player.sendMessage(ChatColor.GREEN + Integer.toString(a));
 				e.setCancelled(true);
 				e.getBlock().setType(Material.AIR);
-				eWorld.dropItemNaturally(eLoc, iss.PgoldH);
-				eWorld.dropItemNaturally(eLoc, iss.PgoldC);
-				eWorld.dropItemNaturally(eLoc, iss.PgoldL);
-				eWorld.dropItemNaturally(eLoc, iss.PgoldB);
+				eWorld.dropItemNaturally(eLoc, perks.PgoldH);
+				eWorld.dropItemNaturally(eLoc, perks.PgoldC);
+				eWorld.dropItemNaturally(eLoc, perks.PgoldL);
+				eWorld.dropItemNaturally(eLoc, perks.PgoldB);
 			}
 			if (a <= 40 && a > 30) {
 				player.sendMessage(ChatColor.YELLOW + Integer.toString(a));
 				e.setCancelled(true);
 				e.getBlock().setType(Material.AIR);
-				eWorld.dropItemNaturally(eLoc, iss.PironH);
-				eWorld.dropItemNaturally(eLoc, iss.PironC);
-				eWorld.dropItemNaturally(eLoc, iss.PironL);
-				eWorld.dropItemNaturally(eLoc, iss.PironB);
-				eWorld.spawnEntity(eLoc, EntityType.OCELOT).setCustomName(ChatColor.WHITE + player.getName().toString() + "'s Cat");
+				eWorld.dropItemNaturally(eLoc, perks.PironH);
+				eWorld.dropItemNaturally(eLoc, perks.PironC);
+				eWorld.dropItemNaturally(eLoc, perks.PironL);
+				eWorld.dropItemNaturally(eLoc, perks.PironB);
+				perks.spawnCat(eWorld, eLoc, player);
 			}
 			if (a <= 50 && a > 40) {
 				player.sendMessage(ChatColor.MAGIC + Integer.toString(a));
 				e.setCancelled(true);
 				e.getBlock().setType(Material.AIR);
-				eWorld.dropItemNaturally(eLoc, iss.PdiamondH);
-				eWorld.dropItemNaturally(eLoc, iss.PdiamondC);
-				eWorld.dropItemNaturally(eLoc, iss.PdiamondL);
-				eWorld.dropItemNaturally(eLoc, iss.PdiamondB);
-				eWorld.spawnEntity(eLoc, EntityType.HORSE).setCustomName(ChatColor.WHITE + player.getName().toString() + "'s Horse");
+				eWorld.dropItemNaturally(eLoc, perks.PdiamondH);
+				eWorld.dropItemNaturally(eLoc, perks.PdiamondC);
+				eWorld.dropItemNaturally(eLoc, perks.PdiamondL);
+				eWorld.dropItemNaturally(eLoc, perks.PdiamondB);
+				perks.spawnHorse(eWorld,eLoc,player);
 			}
 
 			if (a > 50 && a < 60) {
 				player.sendMessage(ChatColor.RED + Integer.toString(a));
 				e.setCancelled(true);
 				e.getBlock().setType(Material.AIR);
-				eWorld.spawnEntity(eLoc, EntityType.WOLF).setCustomName(ChatColor.WHITE + player.getName().toString() + "'s Dog");
+				perks.spawnDog(eWorld, eLoc, player);
 
 			}
 			if (a > 59) {
@@ -106,7 +104,7 @@ public class Listen implements Listener {
 				cs.setType(Material.TNT);
 
 			}
-
+			perks.spawnSheep(eWorld, eLoc);
 		}
 	}
 
