@@ -104,8 +104,7 @@ public class Listen implements Listener {
 				cs.setType(Material.TNT);
 
 			}
-			perks.spawnSheep(eWorld, eLoc);
-		}
+		} 
 	}
 
 	@EventHandler
